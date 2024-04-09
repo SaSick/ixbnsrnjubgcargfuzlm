@@ -5,10 +5,13 @@ CRUD телефония которая взаимодействует с SQL и 
 
 ___
 
-## Технологический стэк
+## Описание контроллеров
 
-1. Java 17
-2. 
+1. POST /clients (принимает ClientDto в качестве параметра)
+2. GET All /clients (принимает необязательные параметры limit и оffset)
+3. GET /client (принимает опционально id || phoneNumber || secondPhoneNumber)
+4. PUT /clients (принимает опционально id || phoneNumber || secondPhoneNumber)
+5. DELETE /clients (принимает опционально id || phoneNumber || secondPhoneNumber)
 
 
 ___
