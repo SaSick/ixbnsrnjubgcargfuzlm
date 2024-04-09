@@ -13,4 +13,6 @@ public interface ClientService {
     List<ClientDto> getAllClients(Filter filter);
 
     ClientDto getClient(ClientParams clientParams);
+
+    ClientDto updateClient(ClientParams clientParams, ClientDto request);
 }

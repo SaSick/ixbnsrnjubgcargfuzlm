@@ -40,4 +40,13 @@ public class ClientController {
     ){
         return clientService.getClient(clientParams);
     }
+
+    @PutMapping("/clients")
+    @ResponseStatus(HttpStatus.OK)
+    public ClientDto updateClient(
+            @SpringQueryMap ClientParams clientParams,
+            @RequestBody ClientDto request
+    ){
+        return clientService.updateClient(clientParams, request);
+    }
 }
