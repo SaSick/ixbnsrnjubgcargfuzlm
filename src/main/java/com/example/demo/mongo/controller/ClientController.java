@@ -49,4 +49,12 @@ public class ClientController {
     ){
         return clientService.updateClient(clientParams, request);
     }
+
+    @DeleteMapping("/clients")
+    @ResponseStatus(HttpStatus.OK)
+    public String deleteClient(
+            @SpringQueryMap ClientParams clientParams
+    ){
+        return clientService.deleteClient(clientParams);
+    }
 }

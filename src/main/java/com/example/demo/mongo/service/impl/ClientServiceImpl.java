@@ -99,6 +99,20 @@ public class ClientServiceImpl implements ClientService {
 
     }
 
+    @Transactional
+    @Override
+    public String deleteClient(ClientParams clientParams) {
+        Client client = findByIdOrPhoneNumberOrSecondPhoneNumber(clientParams.getId(),
+                clientParams.getPhoneNumber(), clientParams.getSecondPhoneNumber());
+
+        if (client == null){
+            throw new ClientNotFoundException("Client not found!");
+        }
+
+        clientRepository.delete(client);
+        return "Client is successfully deleted!";
+    }
+
     private Client findByIdOrPhoneNumberOrSecondPhoneNumber(Long id, String PhoneNumber, String SecondPhoneNumber){
         return customRepository.findByIdOrPhoneNumberOrSecondPhoneNumber(id, PhoneNumber, SecondPhoneNumber);
     }

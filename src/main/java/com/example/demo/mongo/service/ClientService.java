@@ -15,4 +15,6 @@ public interface ClientService {
     ClientDto getClient(ClientParams clientParams);
 
     ClientDto updateClient(ClientParams clientParams, ClientDto request);
+
+    String deleteClient(ClientParams clientParams);
 }
