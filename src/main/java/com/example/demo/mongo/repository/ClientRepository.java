@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+@Repository(value = "mongoRepository")
 public interface ClientRepository extends MongoRepository<Client, Long> {
     List<Client> findByPhoneNumberOrSecondPhoneNumber(String phoneNumber, String secondPhoneNumber);
 }
