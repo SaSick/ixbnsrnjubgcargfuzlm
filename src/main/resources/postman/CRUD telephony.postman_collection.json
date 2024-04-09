@@ -1,0 +1,407 @@
+{
+	"info": {
+		"_postman_id": "4a6296fa-c015-4f28-b80f-8c57ffa4ccdb",
+		"name": "CRUD telephony",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30250265"
+	},
+	"item": [
+		{
+			"name": "Postgres",
+			"item": [
+				{
+					"name": "Get Clients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/clients?limit=2&offset=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "offset",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Client",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/client?id=3&phoneNumber=87086689512&secondPhoneNumber=87086965425",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"client"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3",
+									"description": "optional"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "87086689512",
+									"description": "optional"
+								},
+								{
+									"key": "secondPhoneNumber",
+									"value": "87086965425",
+									"description": "optional"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 11,\r\n    \"username\": \"Anatoly\",\r\n    \"phoneNumber\": \"87086213432\",\r\n    \"secondPhoneNumber\": \"87083265123\",\r\n    \"birthDate\": \"2001-05-08\",\r\n    \"createdAt\": \"2024-04-07T21:18:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Client",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 11,\r\n    \"username\": \"Andrey\",\r\n    \"phoneNumber\": \"87081875621\",\r\n    \"secondPhoneNumber\": \"87083265123\",\r\n    \"birthDate\": \"2001-05-08\",\r\n    \"createdAt\": \"2024-04-07T21:18:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/clients?id=11&phoneNumber=87086213432&secondPhoneNumber=87083265123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "11",
+									"description": "optional"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "87086213432",
+									"description": "optional"
+								},
+								{
+									"key": "secondPhoneNumber",
+									"value": "87083265123",
+									"description": "optional"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Client",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/clients?id=11&phoneNumber=87086213432&secondPhoneNumber=87083265123",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"clients"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "11"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "87086213432"
+								},
+								{
+									"key": "secondPhoneNumber",
+									"value": "87083265123"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This folder contains all CRUD methods that work with PostgreSQL database"
+		},
+		{
+			"name": "Mongo",
+			"item": [
+				{
+					"name": "Get Clients",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v2/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"clients"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Client",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v2/client?id=4&phoneNumber=87086119412&secondPhoneNumber=87086695125",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"client"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "87086119412"
+								},
+								{
+									"key": "secondPhoneNumber",
+									"value": "87086695125"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Client",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": 11,\r\n        \"username\": \"Oleg\",\r\n        \"phoneNumber\": \"87081532598\",\r\n        \"secondPhoneNumber\": \"87081221569\",\r\n        \"birthDate\": \"1995-06-19\",\r\n        \"createdAt\": \"2024-04-07T21:18:00\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v2/clients",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Client",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": 11,\r\n        \"username\": \"Mikhail\",\r\n        \"phoneNumber\": \"87081532598\",\r\n        \"secondPhoneNumber\": \"87081221569\",\r\n        \"birthDate\": \"1995-06-19\",\r\n        \"createdAt\": \"2024-04-07T21:18:00\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v2/clients?id=11&phoneNumber=87081532598&secondPhoneNumber=87081221569",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"clients"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "11"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "87081532598"
+								},
+								{
+									"key": "secondPhoneNumber",
+									"value": "87081221569"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Client",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v2/clients?id=11&phoneNumber=87081532598&secondPhoneNumber=87081221569",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v2",
+								"clients"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "11"
+								},
+								{
+									"key": "phoneNumber",
+									"value": "87081532598"
+								},
+								{
+									"key": "secondPhoneNumber",
+									"value": "87081221569"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"value": "",
+			"type": "string"
+		}
+	]
+}
