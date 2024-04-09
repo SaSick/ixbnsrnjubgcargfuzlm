@@ -14,6 +14,9 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
 
     Client findClientByIdOrPhoneNumberOrSecondPhoneNumber(Long id, String phoneNumber, String secondPhoneNumber);
 
+    List<Client> findByPhoneNumberOrSecondPhoneNumber(String phoneNumber, String secondPhoneNumber);
+
+
     @Query(value = "SELECT c.* FROM clients c ORDER BY c.id"
             + " LIMIT :limitParam"
             + " OFFSET :offsetParam",
@@ -22,6 +25,5 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
             @Param("limitParam") Integer limitParam,
             @Param("offsetParam") Integer offsetParam
     );
-
 
 }

@@ -65,6 +65,38 @@ public class ClientServiceImpl implements ClientService {
         return mapper.map(client, ClientDto.class);
     }
 
+    @Transactional
+    @Override
+    public ClientDto updateClient(ClientParams clientParams, ClientDto clientDTO) {
+        Client clientToUpdate = findByIdOrPhoneNumberOrSecondPhoneNumber(clientParams.getId(), clientParams.getPhoneNumber(), clientParams.getSecondPhoneNumber());
+
+        if (clientToUpdate == null) {
+            throw new ClientNotFoundException("Client not found!");
+        }
+
+        List<Client> existingClients = clientRepository.findByPhoneNumberOrSecondPhoneNumber(
+                clientDTO.getPhoneNumber(), clientDTO.getSecondPhoneNumber());
+
+        existingClients.removeIf(c -> c.getId().equals(clientToUpdate.getId()));
+
+        if (!existingClients.isEmpty()) {
+            throw new APIException("Client with provided  first phone number or second phone number already exists!");
+        }
+
+        Client existingClientWithSameId = clientRepository.findById(clientDTO.getId()).orElse(null);
+        if (existingClientWithSameId != null && !existingClientWithSameId.getId().equals(clientToUpdate.getId())) {
+            throw new APIException("Client with provided id already exists!");
+        }
+
+        mapper.map(clientDTO, clientToUpdate);
+
+        clientToUpdate.setId(clientDTO.getId());
+
+        clientRepository.save(clientToUpdate);
+
+        return mapper.map(clientToUpdate, ClientDto.class);
+    }
+
     private Client findByIdOrPhoneNumberOrSecondPhoneNumber(Long id, String PhoneNumber, String SecondPhoneNumber){
         return clientRepository.findClientByIdOrPhoneNumberOrSecondPhoneNumber(id, PhoneNumber, SecondPhoneNumber);
     }
