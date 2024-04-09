@@ -54,6 +54,7 @@ public class ClientServiceImpl implements ClientService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     @Override
     public ClientDto getClient(ClientParams clientParams) {
         Client client = findByIdOrPhoneNumberOrSecondPhoneNumber(clientParams.getId(),
@@ -95,6 +96,20 @@ public class ClientServiceImpl implements ClientService {
         clientRepository.save(clientToUpdate);
 
         return mapper.map(clientToUpdate, ClientDto.class);
+    }
+
+    @Transactional
+    @Override
+    public String deleteClient(ClientParams clientParams) {
+        Client client = findByIdOrPhoneNumberOrSecondPhoneNumber(clientParams.getId(),
+                clientParams.getPhoneNumber(), clientParams.getSecondPhoneNumber());
+
+        if (client == null){
+            throw new ClientNotFoundException("Client not found!");
+        }
+
+        clientRepository.delete(client);
+        return "Client is successfully deleted!";
     }
 
     private Client findByIdOrPhoneNumberOrSecondPhoneNumber(Long id, String PhoneNumber, String SecondPhoneNumber){
