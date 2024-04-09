@@ -1,6 +1,7 @@
 package com.example.demo.postgres.controller;
 
 import com.example.demo.core.dto.ClientDto;
+import com.example.demo.core.dto.ClientParams;
 import com.example.demo.core.dto.Filter;
 import com.example.demo.postgres.service.ClientService;
 import lombok.RequiredArgsConstructor;
@@ -31,5 +32,13 @@ public class ClientController {
             @SpringQueryMap Filter filter
     ){
         return clientService.getClients(filter);
+    }
+
+    @GetMapping("/client")
+    @ResponseStatus(HttpStatus.OK)
+    public ClientDto getClient(
+            @SpringQueryMap ClientParams clientParams
+    ){
+        return clientService.getClient(clientParams);
     }
 }

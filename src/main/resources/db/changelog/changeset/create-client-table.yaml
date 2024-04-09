@@ -1,0 +1,55 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Sasick
+      changes:
+        - createTable:
+            tableName: clients
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone_number
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: second_phone_number
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: birth_date
+                  type: DATE
+                  constraints:
+                    nullable: true
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 2
+      author: Sasick
+      changes:
+        - loadData:
+            tableName: clients
+            file: db/data/clients-data.csv
+  - changeSet:
+      id: set_sequence_initial_value
+      author: Sasick
+      changes:
+        - sql:
+            sql: ALTER SEQUENCE clients_seq RESTART WITH 11;
+
